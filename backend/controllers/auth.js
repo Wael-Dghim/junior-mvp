@@ -32,10 +32,12 @@ const signup = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const { username, password, email } = req.body;
+  const { creds, password } = req.body;
 
   try {
-    const user = await User.findOne({ $or: [{ email }, { username }] });
+    const user = await User.findOne({
+      $or: [{ email: creds }, { username: creds }],
+    });
     if (!user) {
       return res.status(400).send("Incorrect username or email");
     }
@@ -47,7 +49,7 @@ const login = async (req, res) => {
 
     const token = jwt.sign({ id: user._id }, process.env.TOKEN);
     res.set("Authorization", token);
-    return res.status(200).send("Successfully logged in");
+    return res.status(200).json({ message: "Successfully logged in" });
   } catch (err) {
     res.status(500).json(err);
   }

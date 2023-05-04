@@ -7,10 +7,6 @@ import "../styles/auth.css";
 function Auth() {
   const [login, setLogin] = useState(true);
 
-  const toggleForm = () => {
-    setLogin(!login);
-  };
-
   return (
     <div className="container">
       <AnimatePresence>
@@ -18,9 +14,9 @@ function Auth() {
           <motion.div
             key="login"
             className="form-container login"
-            initial={{ opacity: 0, x: "-100%" }}
+            initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
+            exit={{ opacity: 0, x: 100 }}
             transition={{ duration: 0.3 }}
           >
             <Login />
@@ -29,9 +25,9 @@ function Auth() {
           <motion.div
             key="signup"
             className="form-container signup"
-            initial={{ opacity: 0, x: "100%" }}
+            initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "-100%" }}
+            exit={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.3 }}
           >
             <SignUp />
@@ -39,7 +35,7 @@ function Auth() {
         )}
       </AnimatePresence>
       <div className="toggle-container">
-        <button onClick={toggleForm}>
+        <button onClick={() => setLogin(!login)}>
           Switch to {login ? "Signup" : "Login"}
         </button>
       </div>

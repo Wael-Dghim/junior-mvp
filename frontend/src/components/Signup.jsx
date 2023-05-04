@@ -1,19 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Signup = () => {
+  const [fName, setFName] = useState("");
+  const [lName, setLName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [pw, setPw] = useState("");
+  const [confirmPw, setConfirmPw] = useState("");
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    let newUser;
+    if (fName && lName && username && email && pw === confirmPw) {
+      newUser = {
+        fName,
+        lName,
+        username,
+        email,
+        password: pw,
+      };
+    }
+
+    fetch(`http://localhost:5000/auth/signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    });
+  };
   return (
     <div className="form-container">
-      <form className="form">
+      <form className="form" onSubmit={(e) => handleSubmit(e)}>
         <label>First Name :</label>
-        <input type="text" />
-        <label>Lasr Name :</label>
-        <input type="text" />
-        <label>Username or Email :</label>
-        <input type="text" />
+        <input type="text" onChange={(e) => setFName(e.target.value)} />
+        <label>Last Name :</label>
+        <input type="text" onChange={(e) => setLName(e.target.value)} />
+        <label>Username :</label>
+        <input type="text" onChange={(e) => setUsername(e.target.value)} />
+        <label>Email :</label>
+        <input type="email" onChange={(e) => setEmail(e.target.value)} />
         <label>Password :</label>
-        <input type="password" />
+        <input type="password" onChange={(e) => setPw(e.target.value)} />
         <label>Confirm Password :</label>
-        <input type="password" />
+        <input type="password" onChange={(e) => setConfirmPw(e.target.value)} />
         <input type="submit" value={""} />
       </form>
     </div>
