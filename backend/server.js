@@ -8,6 +8,7 @@ const morgan = require("morgan");
 
 // Importing Routes
 const authRoute = require("./routes/auth");
+const portfolioRoute = require("./routes/portfolio");
 
 //DB
 const Mongoose = require("mongoose");
@@ -20,7 +21,10 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan("dev"));
+
+// Routing
 app.use("/auth", authRoute);
+app.use("/portfolios", portfolioRoute);
 
 Mongoose.connect(process.env.DB, {
   useNewUrlParser: true,
