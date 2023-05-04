@@ -32,11 +32,34 @@ const addPortfolio = async (req, res) => {
   }
 };
 
-const updatePortfolio = async (req, res) => {};
+const updatePortfolio = async (req, res) => {
+  const { fName, lName, bio, email, experiences, skills, user } = req.body;
+  const { id } = req.params;
+  try {
+    await Portfolio.updateOne(
+      { _id: id },
+      {
+        $set: {
+          fName,
+          lName,
+          bio,
+          user,
+          email,
+          experiences,
+          skills,
+        },
+      }
+    );
+    res.send("Portfolio updated successfully");
+  } catch (err) {
+    res.json(err);
+  }
+};
 
 module.exports = {
   getAllPortfolios,
   getOnePortfolio,
   getUserPortfolios,
   addPortfolio,
+  updatePortfolio,
 };
