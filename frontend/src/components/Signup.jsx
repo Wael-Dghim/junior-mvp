@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [fName, setFName] = useState("");
@@ -7,6 +8,8 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
   const [confirmPw, setConfirmPw] = useState("");
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     let newUser;
@@ -26,7 +29,7 @@ const Signup = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newUser),
-    });
+    }).then(() => navigate("/home"));
   };
   return (
     <div className="form-container">

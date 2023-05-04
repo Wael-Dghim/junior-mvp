@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [creds, setCreds] = useState("");
   const [pw, setPw] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,9 +15,7 @@ const Login = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ creds, password: pw }),
-    })
-      .then((res) => res.json())
-      .then((res) => console.log(res));
+    }).then(() => navigate("/home"));
   };
   return (
     <div className="form-container">
