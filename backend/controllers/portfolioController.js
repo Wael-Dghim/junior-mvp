@@ -8,4 +8,8 @@ const getOnePortfolio = async (req, res) => {
   res.json(await Portfolio.findById(req.params.id));
 };
 
-module.exports = { getAllPortfolios, getOnePortfolio };
+const getUserPortfolios = async (req, res) => {
+  res.json(await Portfolio.find({ user: req.params.id }));
+};
+
+module.exports = { getAllPortfolios, getOnePortfolio, getUserPortfolios };
