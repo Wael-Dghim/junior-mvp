@@ -23,7 +23,7 @@ const Signup = () => {
       };
     }
 
-    fetch(`http://localhost:5000/auth/signup`, {
+    fetch(`${import.meta.env.API_URL}/auth/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

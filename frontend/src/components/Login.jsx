@@ -9,7 +9,7 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch("http://localhost:5000/auth/login", {
+    fetch(`${import.meta.env.API_URL}/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
