@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import "./App.css";
 import "./styles/nav.css";
 import CreatePortfolio from "./pages/CreatePortfolio";
+import UpdatePortfolio from "./pages/UpdatePortfolio";
 
 function App() {
   const location = useLocation().pathname;
@@ -21,6 +22,7 @@ function App() {
           <Route index element={<Auth setUser={setUser} />} />
           <Route path="home" element={<Landing />} />
           <Route path="create" element={<CreatePortfolio user={user} />} />
+          <Route path="update/:id" element={<UpdatePortfolio user={user} />} />
           <Route path="profile/:id" element={<Profile user={user} />} />
           <Route path="portfolio/:id" element={<Portfolio />} />
         </Route>

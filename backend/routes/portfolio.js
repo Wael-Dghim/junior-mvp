@@ -5,6 +5,7 @@ const {
   getUserPortfolios,
   addPortfolio,
   updatePortfolio,
+  deletePortfolio,
 } = require("../controllers/portfolioController");
 const { authenticate } = require("../middleware/auth");
 
@@ -15,5 +16,7 @@ router.get("/user/:id", getUserPortfolios);
 router.post("/", addPortfolio);
 
 router.put("/:id", updatePortfolio);
+
+router.delete("/:id", deletePortfolio);
 
 module.exports = router;

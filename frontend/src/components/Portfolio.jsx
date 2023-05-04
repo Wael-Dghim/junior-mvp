@@ -1,9 +1,14 @@
 import React from "react";
 import "../styles/portfolio.css";
+import { useNavigate } from "react-router-dom";
 
 const Portfolio = ({ portfolio }) => {
+  const navigate = useNavigate();
   return (
-    <div className="nft">
+    <div
+      className="nft"
+      onClick={() => navigate(`/portfolio/${portfolio._id}`)}
+    >
       <div className="main">
         <img
           className="tokenImage"
@@ -14,9 +19,6 @@ const Portfolio = ({ portfolio }) => {
           {portfolio.fName} {portfolio.lName}
         </h2>
         <p className="description">{portfolio.bio}</p>
-        <div className="tokenInfo">
-          <div className="price"></div>
-        </div>
       </div>
     </div>
   );

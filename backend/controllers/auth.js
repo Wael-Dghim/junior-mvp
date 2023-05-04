@@ -24,8 +24,8 @@ const signup = async (req, res) => {
     await newUser.save();
     const user = await User.findOne({ username });
     const token = jwt.sign({ id: user._id }, process.env.TOKEN);
-    res.set("Authorization", token);
-    return res.json({ id: user._id, fName, lName, username, email });
+    res.header({ authorization: token });
+    res.json({ id: user._id, fName, lName, username, email });
   } catch (err) {
     console.log(err);
   }
@@ -48,7 +48,7 @@ const login = async (req, res) => {
     }
 
     const token = jwt.sign({ id: user._id }, process.env.TOKEN);
-    res.set("Authorization", token);
+    res.set("authorization", token);
     return res.json({
       id: user._id,
       fName: user.fName,

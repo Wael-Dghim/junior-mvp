@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 
 import "../styles/create.css";
+import { useParams } from "react-router-dom";
 
-const CreatePortfolio = ({ user }) => {
+const UpdatePortfolio = ({ user }) => {
   const [fName, setFName] = useState(user.fName);
   const [lName, setLName] = useState(user.lName);
   const [bio, setBio] = useState("");
   const [email, setEmail] = useState(user.email);
   const [experience, setExperience] = useState([1]);
   const [skills, setSkills] = useState([1]);
-
+  const { id } = useParams();
+  console.log(id);
   const handleSubmit = () => {
     const exp = [];
     const skill = [];
@@ -27,28 +29,28 @@ const CreatePortfolio = ({ user }) => {
     ) {
       skill.push(document.getElementById("skill").children[i].value);
     }
-    console.log(skill, exp);
-    const newPortfolio = {
+    const updatedPortfolio = {
       fName,
       lName,
       bio,
       email,
-      user: user.id,
       experiences: exp,
       skills: skill,
     };
 
-    fetch(`${import.meta.env.VITE_API_URL}/portfolios/`, {
-      method: "POST",
+    fetch(`${import.meta.env.VITE_API_URL}/portfolios/${id}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newPortfolio),
+      body: JSON.stringify(updatedPortfolio),
     });
   };
-
+  const preventDef = (e) => {
+    e.preventDefault();
+  };
   return (
-    <form id="add" onSubmit={(e) => e.preventDefault()}>
+    <form id="add" onSubmit={(e) => preventDef(e)}>
       <input
         type="text"
         placeholder="first name"
@@ -87,4 +89,4 @@ const CreatePortfolio = ({ user }) => {
   );
 };
 
-export default CreatePortfolio;
+export default UpdatePortfolio;

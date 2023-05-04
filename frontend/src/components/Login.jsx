@@ -15,18 +15,28 @@ const Login = ({ setUser }) => {
       },
       body: JSON.stringify({ creds, password: pw }),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        return res.json();
+      })
       .then((data) => setUser(data))
-      .then(() => navigate("/home"));
+      .then(() => {
+        navigate("/home");
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <div className="form-container">
       <form className="form" onSubmit={(e) => handleSubmit(e)}>
         <label>Username or Email :</label>
+        <br />
         <input type="text" onChange={(e) => setCreds(e.target.value)} />
+        <br />
         <label>Password :</label>
+        <br />
         <input type="text" onChange={(e) => setPw(e.target.value)} />
-        <input type="submit" value={""} />
+        <br />
+        <button type="submit">Login</button>
       </form>
     </div>
   );

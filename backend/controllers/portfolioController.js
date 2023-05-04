@@ -33,7 +33,7 @@ const addPortfolio = async (req, res) => {
 };
 
 const updatePortfolio = async (req, res) => {
-  const { fName, lName, bio, email, experiences, skills, user } = req.body;
+  const { fName, lName, bio, email, experiences, skills } = req.body;
   const { id } = req.params;
   try {
     await Portfolio.updateOne(
@@ -43,7 +43,6 @@ const updatePortfolio = async (req, res) => {
           fName,
           lName,
           bio,
-          user,
           email,
           experiences,
           skills,
@@ -56,10 +55,21 @@ const updatePortfolio = async (req, res) => {
   }
 };
 
+const deletePortfolio = async (req, res) => {
+  let { id } = req.params;
+  try {
+    await Portfolio.deleteOne({ _id: id });
+    res.send("Portfolio deleted");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
 module.exports = {
   getAllPortfolios,
   getOnePortfolio,
   getUserPortfolios,
   addPortfolio,
   updatePortfolio,
+  deletePortfolio,
 };
