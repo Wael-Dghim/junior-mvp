@@ -7,10 +7,10 @@ const {
 } = require("../controllers/portfolioController");
 const { authenticate } = require("../middleware/auth");
 
-router.get("/", authenticate, getAllPortfolios);
-router.get("/:id", authenticate, getOnePortfolio);
-router.get("/user/:id", authenticate, getUserPortfolios);
+router.get("/", getAllPortfolios);
+router.get("/:id", getOnePortfolio);
+router.get("/user/:id", getUserPortfolios);
 
-router.post("/", authenticate, addPortfolio);
+router.post("/", addPortfolio);
 
 module.exports = router;

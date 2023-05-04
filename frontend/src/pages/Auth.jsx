@@ -4,7 +4,7 @@ import SignUp from "../components/Signup";
 import Login from "../components/Login";
 import "../styles/auth.css";
 
-function Auth() {
+function Auth({ setUser }) {
   const [login, setLogin] = useState(true);
 
   return (
@@ -19,7 +19,7 @@ function Auth() {
             exit={{ opacity: 0, x: 100 }}
             transition={{ duration: 0.3 }}
           >
-            <Login />
+            <Login setUser={setUser} />
           </motion.div>
         ) : (
           <motion.div

@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setUser }) => {
   const [creds, setCreds] = useState("");
   const [pw, setPw] = useState("");
   const navigate = useNavigate();
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch(`${import.meta.env.API_URL}/auth/login`, {
+    fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ creds, password: pw }),
-    }).then(() => navigate("/home"));
+    })
+      .then((res) => res.json())
+      .then((data) => setUser(data))
+      .then(() => navigate("/home"));
   };
   return (
     <div className="form-container">

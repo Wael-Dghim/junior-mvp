@@ -1,0 +1,19 @@
+nav {
+  position: absolute;
+  top: 6px;
+  text-align: end;
+  right: -32px;
+  width: 100%;
+  height: 60px;
+  margin: 2rem;
+}
+
+nav a {
+  font-size: larger;
+  margin: 2rem;
+  margin-right: 2.2rem;
+}
+
+hr {
+  margin-top: 2.4rem;
+}

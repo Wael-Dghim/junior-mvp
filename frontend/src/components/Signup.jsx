@@ -12,24 +12,23 @@ const Signup = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    let newUser;
     if (fName && lName && username && email && pw === confirmPw) {
-      newUser = {
+      const newUser = {
         fName,
         lName,
         username,
         email,
         password: pw,
       };
-    }
 
-    fetch(`${import.meta.env.API_URL}/auth/signup`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newUser),
-    }).then(() => navigate("/home"));
+      fetch(`${import.meta.env.API_URL}/auth/signup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      }).then(() => navigate("/home"));
+    }
   };
   return (
     <div className="form-container">

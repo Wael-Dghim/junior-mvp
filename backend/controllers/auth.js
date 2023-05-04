@@ -25,7 +25,7 @@ const signup = async (req, res) => {
     const user = await User.findOne({ username });
     const token = jwt.sign({ id: user._id }, process.env.TOKEN);
     res.set("Authorization", token);
-    return res.send("User created successfully");
+    return res.json({ id: user._id, fName, lName, username, email });
   } catch (err) {
     console.log(err);
   }
@@ -49,7 +49,13 @@ const login = async (req, res) => {
 
     const token = jwt.sign({ id: user._id }, process.env.TOKEN);
     res.set("Authorization", token);
-    return res.status(200).json({ message: "Successfully logged in" });
+    return res.json({
+      id: user._id,
+      fName: user.fName,
+      lName: user.lName,
+      username: user.username,
+      email: user.email,
+    });
   } catch (err) {
     res.status(500).json(err);
   }

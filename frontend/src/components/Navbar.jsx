@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
   return (
     <nav>
-      <ul>
-        <Link to="/home">All Posts</Link>
-        <Link to="/">My Posts</Link>
-      </ul>
+      <Link to="/home">All Posts</Link>
+      <Link to={`/profile/${user.id}`}>My Posts</Link>
+      <hr />
     </nav>
   );
 };
