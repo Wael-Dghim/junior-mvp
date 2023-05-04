@@ -6,7 +6,7 @@ const portfolioSchema = Mongoose.Schema({
   bio: String,
   skills: Array,
   experiences: Array,
-  user: Object,
+  user: String,
 });
 
 module.exports = Mongoose.model("portfolio", portfolioSchema);
