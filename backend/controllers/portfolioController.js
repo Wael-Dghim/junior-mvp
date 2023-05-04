@@ -12,4 +12,27 @@ const getUserPortfolios = async (req, res) => {
   res.json(await Portfolio.find({ user: req.params.id }));
 };
 
-module.exports = { getAllPortfolios, getOnePortfolio, getUserPortfolios };
+const addPortfolio = async (req, res) => {
+  const { fName, lName, bio, email, experiences, skills } = req.body;
+  try {
+    const newPortfolio = new Portfolio({
+      fName,
+      lName,
+      bio,
+      email,
+      experiences,
+      skills,
+    });
+    await newPortfolio.save();
+    res.status(200).send("Portfolio created successfully");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+module.exports = {
+  getAllPortfolios,
+  getOnePortfolio,
+  getUserPortfolios,
+  addPortfolio,
+};
