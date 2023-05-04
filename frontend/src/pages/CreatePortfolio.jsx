@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 
-const CreatePortfolio = () => {
+import "../styles/create.css";
+
+const CreatePortfolio = ({ user }) => {
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");
   const [bio, setBio] = useState("");
   const [email, setEmail] = useState("");
-  const [experience, setExperience] = useState("");
-  const [skills, setSkills] = useState("");
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const [experience, setExperience] = useState([1]);
+  const [skills, setSkills] = useState([1]);
+  console.log(user);
+  const handleSubmit = () => {
     const newPortfolio = {
       fName,
       lName,
       bio,
       email,
-      experience: experience.split(" "),
-      skills: skills.split(" "),
+      user: user.id,
+      experience: [],
+      skills: [],
     };
 
     fetch(`${import.meta.env.VITE_API_URL}/portfolios/`, {
@@ -24,12 +27,13 @@ const CreatePortfolio = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newPortfolio),
-    })
-      .then((res) => res.json())
-      .then((res) => alert(res));
+    });
+  };
+  const preventDef = (e) => {
+    e.preventDefault();
   };
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form id="add" onSubmit={(e) => preventDef(e)}>
       <input
         type="text"
         placeholder="first name"
@@ -46,17 +50,21 @@ const CreatePortfolio = () => {
         placeholder="email"
         onChange={(e) => setEmail(e.target.value)}
       />
-      <input
-        type="text"
-        placeholder="experiences"
-        onChange={(e) => setExperience(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="skills"
-        onChange={(e) => setSkills(e.target.value)}
-      />
-      <input type="submit" />
+      <div>
+        {experience.map((e, i) => (
+          <input type="text" placeholder="experience" />
+        ))}
+        <button onClick={() => setExperience([...experience, 1])}>
+          Add Field
+        </button>
+      </div>
+      <div>
+        {skills.map((e, i) => (
+          <input type="text" placeholder="skill" />
+        ))}
+        <button onClick={() => setSkills([...skills, 1])}>Add Field</button>
+      </div>
+      <button onClick={handleSubmit}>Submit</button>
     </form>
   );
 };

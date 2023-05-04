@@ -9,26 +9,30 @@ const getOnePortfolio = async (req, res) => {
 };
 
 const getUserPortfolios = async (req, res) => {
+  console.log(req.params.id);
   res.json(await Portfolio.find({ user: req.params.id }));
 };
 
 const addPortfolio = async (req, res) => {
-  const { fName, lName, bio, email, experiences, skills } = req.body;
+  const { fName, lName, bio, email, experiences, skills, user } = req.body;
   try {
     const newPortfolio = new Portfolio({
       fName,
       lName,
       bio,
+      user,
       email,
       experiences,
       skills,
     });
     await newPortfolio.save();
-    res.status(200).send("Portfolio created successfully");
+    res.status(200).json({ message: "Portfolio created successfully" });
   } catch (err) {
     res.status(500).json(err);
   }
 };
+
+const updatePortfolio = async (req, res) => {};
 
 module.exports = {
   getAllPortfolios,

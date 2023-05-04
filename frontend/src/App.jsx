@@ -20,7 +20,7 @@ function App() {
         <Route path="/">
           <Route index element={<Auth setUser={setUser} />} />
           <Route path="home" element={<Landing />} />
-          <Route path="create" element={<CreatePortfolio />} />
+          <Route path="create" element={<CreatePortfolio user={user} />} />
           <Route path="profile/:id" element={<Profile user={user} />} />
           <Route path="portfolio/:id" element={<Portfolio />} />
         </Route>
