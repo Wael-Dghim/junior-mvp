@@ -16,8 +16,7 @@ function Auth({ setUser }) {
             className="form-container login"
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 100 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.4, type: "spring", stiffness: 300 }}
           >
             <Login setUser={setUser} />
           </motion.div>
@@ -27,17 +26,22 @@ function Auth({ setUser }) {
             className="form-container signup"
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.4, type: "spring", stiffness: 300 }}
           >
             <SignUp />
           </motion.div>
         )}
       </AnimatePresence>
       <div className="toggle-container">
-        <button onClick={() => setLogin(!login)}>
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          whileHover={{ scale: 1.3 }}
+          onClick={() => setLogin(!login)}
+        >
           {login ? "Don't have an account?" : "You have an account?"}
-        </button>
+        </motion.button>
       </div>
     </div>
   );

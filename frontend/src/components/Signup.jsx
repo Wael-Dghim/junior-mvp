@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Signup = () => {
   const [fName, setFName] = useState("");
@@ -34,23 +35,56 @@ const Signup = () => {
     <div>
       <form className="form" onSubmit={(e) => handleSubmit(e)}>
         <label>First Name :</label> <br />
-        <input type="text" onChange={(e) => setFName(e.target.value)} /> <br />
+        <motion.input
+          whileHover={{ scale: 1.25 }}
+          type="text"
+          onChange={(e) => setFName(e.target.value)}
+        />{" "}
+        <br />
         <label>Last Name :</label> <br />
-        <input type="text" onChange={(e) => setLName(e.target.value)} /> <br />
+        <motion.input
+          whileHover={{ scale: 1.25 }}
+          type="text"
+          onChange={(e) => setLName(e.target.value)}
+        />{" "}
+        <br />
         <label>Username :</label> <br />
-        <input type="text" onChange={(e) => setUsername(e.target.value)} />{" "}
+        <motion.input
+          whileHover={{ scale: 1.25 }}
+          type="text"
+          onChange={(e) => setUsername(e.target.value)}
+        />{" "}
         <br />
         <label>Email :</label> <br />
-        <input type="email" onChange={(e) => setEmail(e.target.value)} /> <br />
+        <motion.input
+          whileHover={{ scale: 1.25 }}
+          type="email"
+          onChange={(e) => setEmail(e.target.value)}
+        />{" "}
+        <br />
         <label>Password :</label> <br />
-        <input type="password" onChange={(e) => setPw(e.target.value)} /> <br />
+        <motion.input
+          whileHover={{ scale: 1.25 }}
+          type="password"
+          onChange={(e) => setPw(e.target.value)}
+        />{" "}
+        <br />
         <label>Confirm Password :</label> <br />
-        <input
+        <motion.input
+          whileHover={{ scale: 1.25 }}
           type="password"
           onChange={(e) => setConfirmPw(e.target.value)}
         />{" "}
         <br />
-        <button type="submit">Sign Up</button>
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          whileHover={{ scale: 1.3 }}
+          type="submit"
+        >
+          Sign Up
+        </motion.button>
       </form>
     </div>
   );

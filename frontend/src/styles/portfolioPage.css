@@ -1,7 +1,19 @@
 #portfolio {
   margin-top: 8rem;
+  /* text-align: center; */
 }
 
 #picture {
   border-radius: 50%;
+}
+
+ul {
+  justify-self: center;
+  align-self: center;
+  margin-right: 2rem;
+  list-style: none;
+}
+
+#text {
+  text-align: center;
 }

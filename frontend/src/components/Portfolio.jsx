@@ -1,8 +1,8 @@
 import React from "react";
-import "../styles/portfolio.css";
 import { useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
+import "../styles/portfolio.css";
 
 const Portfolio = ({ portfolio }) => {
   const navigate = useNavigate();

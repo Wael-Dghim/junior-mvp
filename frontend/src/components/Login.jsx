@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Login = ({ setUser }) => {
   const [creds, setCreds] = useState("");
@@ -28,15 +29,35 @@ const Login = ({ setUser }) => {
   return (
     <div>
       <form className="form" onSubmit={(e) => handleSubmit(e)}>
-        <label>Username or Email :</label>
+        <label whileHover={{ scale: 1.3 }}>
+          Username or Email :
+          <br />
+          <motion.input
+            whileHover={{ scale: 1.25 }}
+            type="text"
+            onChange={(e) => setCreds(e.target.value)}
+          />
+        </label>
         <br />
-        <input type="text" onChange={(e) => setCreds(e.target.value)} />
+        <label whileHover={{ scale: 1.3 }}>
+          Password :
+          <br />
+          <motion.input
+            whileHover={{ scale: 1.25 }}
+            type="password"
+            onChange={(e) => setPw(e.target.value)}
+          />
+        </label>
         <br />
-        <label>Password :</label>
-        <br />
-        <input type="password" onChange={(e) => setPw(e.target.value)} />
-        <br />
-        <button type="submit">Login</button>
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          whileHover={{ scale: 1.3 }}
+          type="submit"
+        >
+          Login
+        </motion.button>
       </form>
     </div>
   );

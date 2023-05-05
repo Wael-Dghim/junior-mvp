@@ -16,6 +16,8 @@
   -webkit-backdrop-filter: blur(7px);
   overflow: hidden;
   transition: 0.5s all;
+  display: flex;
+  flex-direction: column;
 }
 
 .nft::before {

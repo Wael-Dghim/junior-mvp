@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import "../styles/portfolioPage.css";
 
@@ -17,14 +18,16 @@ const Portfolio = () => {
     <>
       {portfolio ? (
         <div id="portfolio">
-          <img
+          <motion.img
+            whileHover={{ rotate: 360 }}
+            transition={{ duration: 6, delay: 0 }}
             src={portfolio.src}
             alt="image"
             width={220}
             height={220}
             id="picture"
           />
-          <div>
+          <div id="text">
             <h2>
               {portfolio.lName} {portfolio.fName}
             </h2>
