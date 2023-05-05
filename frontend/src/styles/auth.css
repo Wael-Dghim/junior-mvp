@@ -1,6 +1,6 @@
 .container {
   max-width: 35vw;
-  height: 60vh;
+  height: 63 vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,15 +8,45 @@
 }
 
 .form-container {
+  color: rgb(49, 47, 47);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 43vh;
-  width: 40vw;
-  border: 1px solid red;
+  max-height: 63vh;
+  background: linear-gradient(rgba(139, 239, 252, 0.637), rgb(72, 201, 233));
+  width: 30vw;
+  padding: 13px;
+  border: none;
+  border-radius: 15px;
 }
 
 .form-container input {
+  color: rgb(0, 0, 0);
   width: 100%;
+  padding: 8px;
+  background: rgba(146, 199, 235, 0.527);
+  border: none;
+  border-radius: 15px;
+}
+
+.form-container input:last-of-type {
+  margin-bottom: 20px;
+}
+
+.form-container input:focus {
+  outline: none;
+}
+
+.form-container button[type="submit"] {
+  margin-bottom: 5px;
+}
+
+.toggle-container {
+  position: absolute;
+  bottom: 10px;
+}
+
+button:focus {
+  outline: none;
 }

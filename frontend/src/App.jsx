@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import Auth from "./pages/Auth";
 import { Route, Routes, useLocation } from "react-router-dom";
+
+import Auth from "./pages/Auth";
 import Landing from "./pages/Landing";
 import Portfolio from "./pages/Portfolio";
 import Navbar from "./components/Navbar";
 import Profile from "./pages/Profile";
-
-import "./App.css";
-import "./styles/nav.css";
 import CreatePortfolio from "./pages/CreatePortfolio";
 import UpdatePortfolio from "./pages/UpdatePortfolio";
+
+import "./App.css";
 
 function App() {
   const location = useLocation().pathname;

@@ -8,7 +8,7 @@ function Auth({ setUser }) {
   const [login, setLogin] = useState(true);
 
   return (
-    <div className="container">
+    <div className="container" id="root">
       <AnimatePresence>
         {login ? (
           <motion.div
@@ -36,7 +36,7 @@ function Auth({ setUser }) {
       </AnimatePresence>
       <div className="toggle-container">
         <button onClick={() => setLogin(!login)}>
-          Switch to {login ? "Signup" : "Login"}
+          {login ? "Don't have an account?" : "You have an account?"}
         </button>
       </div>
     </div>

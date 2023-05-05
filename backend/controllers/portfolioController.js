@@ -14,12 +14,13 @@ const getUserPortfolios = async (req, res) => {
 };
 
 const addPortfolio = async (req, res) => {
-  const { fName, lName, bio, email, experiences, skills, user } = req.body;
+  const { fName, lName, bio, email, src, experiences, skills, user } = req.body;
   try {
     const newPortfolio = new Portfolio({
       fName,
       lName,
       bio,
+      src,
       user,
       email,
       experiences,
@@ -33,7 +34,7 @@ const addPortfolio = async (req, res) => {
 };
 
 const updatePortfolio = async (req, res) => {
-  const { fName, lName, bio, email, experiences, skills } = req.body;
+  const { fName, lName, bio, email, src, experiences, skills } = req.body;
   const { id } = req.params;
   try {
     await Portfolio.updateOne(
@@ -43,6 +44,7 @@ const updatePortfolio = async (req, res) => {
           fName,
           lName,
           bio,
+          src,
           email,
           experiences,
           skills,

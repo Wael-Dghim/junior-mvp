@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Portfolio from "../components/Portfolio";
+import { motion } from "framer-motion";
+
+import "../styles/profile.css";
 
 const Profile = ({ user }) => {
   const [userPortfolios, setUserPortfolios] = useState([]);
@@ -23,16 +26,37 @@ const Profile = ({ user }) => {
     navigate("/home");
   };
   return (
-    <>
+    <div>
       {userPortfolios.map((e, i) => (
-        <div key={i}>
+        <div className="profile" key={i}>
           <Portfolio portfolio={e} />
-          <button onClick={() => navigate(`/update/${e._id}`)}>Update</button>
-          <button onClick={() => handleDelete(e._id)}>Delete</button>
+          <div className="buttons">
+            <motion.button
+              onClick={() => navigate(`/update/${e._id}`)}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.8 }}
+            >
+              Update
+            </motion.button>
+            <motion.button
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              onClick={() => handleDelete(e._id)}
+            >
+              Delete
+            </motion.button>
+          </div>
         </div>
       ))}
-      <button onClick={() => navigate("/create")}>add portfolio</button>
-    </>
+      <motion.button
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        whileHover={{ scale: 1.3 }}
+        onClick={() => navigate("/create")}
+      >
+        Create portfolio
+      </motion.button>
+    </div>
   );
 };
 

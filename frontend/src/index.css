@@ -4,8 +4,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: black;
+  background: linear-gradient(135deg, rgb(88, 189, 236), rgb(45, 114, 206));
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -29,9 +29,6 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background: url("./assets/bg.jpeg");
-  background-position: center;
-  background-size: cover;
 }
 
 h1 {

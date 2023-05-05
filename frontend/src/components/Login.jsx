@@ -26,7 +26,7 @@ const Login = ({ setUser }) => {
       .catch((err) => console.log(err));
   };
   return (
-    <div className="form-container">
+    <div>
       <form className="form" onSubmit={(e) => handleSubmit(e)}>
         <label>Username or Email :</label>
         <br />
@@ -34,7 +34,7 @@ const Login = ({ setUser }) => {
         <br />
         <label>Password :</label>
         <br />
-        <input type="text" onChange={(e) => setPw(e.target.value)} />
+        <input type="password" onChange={(e) => setPw(e.target.value)} />
         <br />
         <button type="submit">Login</button>
       </form>

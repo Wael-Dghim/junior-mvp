@@ -21,7 +21,7 @@ const Signup = () => {
         password: pw,
       };
 
-      fetch(`${import.meta.env.API_URL}/auth/signup`, {
+      fetch(`${import.meta.env.VITE_API_URL}/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,21 +31,26 @@ const Signup = () => {
     }
   };
   return (
-    <div className="form-container">
+    <div>
       <form className="form" onSubmit={(e) => handleSubmit(e)}>
-        <label>First Name :</label>
-        <input type="text" onChange={(e) => setFName(e.target.value)} />
-        <label>Last Name :</label>
-        <input type="text" onChange={(e) => setLName(e.target.value)} />
-        <label>Username :</label>
-        <input type="text" onChange={(e) => setUsername(e.target.value)} />
-        <label>Email :</label>
-        <input type="email" onChange={(e) => setEmail(e.target.value)} />
-        <label>Password :</label>
-        <input type="password" onChange={(e) => setPw(e.target.value)} />
-        <label>Confirm Password :</label>
-        <input type="password" onChange={(e) => setConfirmPw(e.target.value)} />
-        <input type="submit" value={""} />
+        <label>First Name :</label> <br />
+        <input type="text" onChange={(e) => setFName(e.target.value)} /> <br />
+        <label>Last Name :</label> <br />
+        <input type="text" onChange={(e) => setLName(e.target.value)} /> <br />
+        <label>Username :</label> <br />
+        <input type="text" onChange={(e) => setUsername(e.target.value)} />{" "}
+        <br />
+        <label>Email :</label> <br />
+        <input type="email" onChange={(e) => setEmail(e.target.value)} /> <br />
+        <label>Password :</label> <br />
+        <input type="password" onChange={(e) => setPw(e.target.value)} /> <br />
+        <label>Confirm Password :</label> <br />
+        <input
+          type="password"
+          onChange={(e) => setConfirmPw(e.target.value)}
+        />{" "}
+        <br />
+        <button type="submit">Sign Up</button>
       </form>
     </div>
   );

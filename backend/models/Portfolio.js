@@ -8,6 +8,7 @@ const portfolioSchema = Mongoose.Schema(
     email: String,
     skills: Array,
     experiences: Array,
+    src: String,
     user: String,
   },
   { timestamps: true }

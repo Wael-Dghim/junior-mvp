@@ -1,38 +1,43 @@
 import React, { useState } from "react";
 
 import "../styles/create.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const UpdatePortfolio = ({ user }) => {
   const [fName, setFName] = useState(user.fName);
   const [lName, setLName] = useState(user.lName);
   const [bio, setBio] = useState("");
+  const [src, setSrc] = useState("");
   const [email, setEmail] = useState(user.email);
   const [experience, setExperience] = useState([1]);
   const [skills, setSkills] = useState([1]);
+
+  const navigate = useNavigate();
+
   const { id } = useParams();
-  console.log(id);
+
   const handleSubmit = () => {
     const exp = [];
     const skill = [];
     for (
       let i = 0;
-      i < document.getElementById("exp").children.length - 1;
+      i < document.getElementsByClassName("exp")[0].children.length - 1;
       i++
     ) {
-      exp.push(document.getElementById("exp").children[i].value);
+      exp.push(document.getElementsByClassName("exp")[0].children[i].value);
     }
     for (
       let i = 0;
-      i < document.getElementById("skill").children.length - 1;
+      i < document.getElementsByClassName("skill")[0].children.length - 1;
       i++
     ) {
-      skill.push(document.getElementById("skill").children[i].value);
+      skill.push(document.getElementsByClassName("skill")[0].children[i].value);
     }
     const updatedPortfolio = {
       fName,
       lName,
       bio,
+      src,
       email,
       experiences: exp,
       skills: skill,
@@ -44,13 +49,11 @@ const UpdatePortfolio = ({ user }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(updatedPortfolio),
-    });
+    }).then(() => navigate("/home"));
   };
-  const preventDef = (e) => {
-    e.preventDefault();
-  };
+
   return (
-    <form id="add" onSubmit={(e) => preventDef(e)}>
+    <form className="add" onSubmit={(e) => e.preventDefault()}>
       <input
         type="text"
         placeholder="first name"
@@ -70,7 +73,7 @@ const UpdatePortfolio = ({ user }) => {
         defaultValue={user.email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <div id="exp">
+      <div className="exp">
         {experience.map((e, i) => (
           <input key={i} type="text" placeholder="experience" />
         ))}
@@ -78,12 +81,17 @@ const UpdatePortfolio = ({ user }) => {
           Add Field
         </button>
       </div>
-      <div id="skill">
+      <div className="skill">
         {skills.map((e, i) => (
           <input key={i} type="text" placeholder="skill" />
         ))}
         <button onClick={() => setSkills([...skills, 1])}>Add Field</button>
       </div>
+      <input
+        type="text"
+        placeholder="Image Url"
+        onChange={(e) => setSrc(e.target.value)}
+      />
       <button onClick={handleSubmit}>Submit</button>
     </form>
   );

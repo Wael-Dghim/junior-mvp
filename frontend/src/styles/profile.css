@@ -2,13 +2,14 @@
   user-select: none;
   width: 25vw;
   margin-top: 8rem;
-  margin-left: 7rem;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
   border: 1px solid #ffffff22;
   background-color: #282c34;
   background: linear-gradient(
     0deg,
-    rgb(114, 133, 167) 0%,
-    rgba(79, 173, 250, 0.5) 100%
+    rgb(106, 188, 221) 0%,
+    rgb(199, 230, 255) 100%
   );
   box-shadow: 0 7px 20px 5px #00000088;
   border-radius: 0.7rem;
@@ -60,4 +61,14 @@
 
 .name {
   color: black;
+}
+
+.buttons {
+  margin: 9px;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+}
+
+.buttons button {
+  margin: 4px;
 }
